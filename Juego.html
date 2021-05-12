@@ -112,9 +112,7 @@
             this.inicializar();
             this.generarSecuencia();
             setTimeout(this.siguienteNivel,500)
-
         }
-
         inicializar() {
           this.siguienteNivel = this.siguienteNivel.bind(this)
           this.elegirColor = this.elegirColor.bind(this)
@@ -149,8 +147,7 @@
             setTimeout(() => this.iluminarColor(color),1000*i)
           }
         }
-        transformarNumeroAColor(numero)
-        {
+        transformarNumeroAColor(numero){
           switch(numero){
             case 0:
               return 'celeste';
@@ -162,7 +159,18 @@
               return 'verde';
           }
         }
-
+	transformarColorANumero(color){
+          switch(color){
+            case 'celeste':
+              return 0;
+            case 'violeta':
+              return 1;
+            case 'naranja':
+              return 2;
+            case 'verde':
+              return 3;
+          }
+        }
         iluminarColor(color){
           this.colores[color].classList.add('light')
           setTimeout(() => this.apagarColor(color),350)
@@ -182,7 +190,6 @@
           this.colores.violeta.removeEventListener('click', this.elegirColor)
           this.colores.naranja.removeEventListener('click', this.elegirColor)
         }
-
         elegirColor(ev){
           const nombreColor = ev.target.dataset.color
           const numeroColor = this.transformarColorANumero(nombreColor)
@@ -213,28 +220,10 @@
             this.inicializar()
           })
         }
-
-        transformarColorANumero(color)
-        {
-          switch(color){
-            case 'celetes':
-              return 0;
-            case 'violeta':
-              return 1;
-            case 'naranja':
-              return 2;
-            case 'verde':
-              return 3;
-          }
-        }
-
       }
-
       function empezarJuego() {
         window.juego = new Juego()
       }
-
-
     </script>
   </body>
 </html>
